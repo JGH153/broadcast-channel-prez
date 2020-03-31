@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi) ? "css/print/pdf.css" : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+    <style>
+      .bcc {
+        color: #2b6abc !important;
+      }
+
+      .slides {
+        width: 80% !important;
+      }
+
+      .med-text {
+        font-size: 60px;
+      }
+
+      .large-text {
+        font-size: 100px;
+      }
+
+      .normalcase {
+        text-transform: none !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        text-transform: none !important;
+      }
+
+      .controls,
+      .progress {
+        /* Add for recording */
+        /* opacity: 0 !important; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 class="normalcase"><span class="bcc">Broadcast Channel</span> API</h1>
+          <h3>One solution, several tabs</h3>
+        </section>
+        <section>
+          <h2>The <span class="bcc">best</span> way to send messages between browser <span class="bcc">tabs</span></h2>
+        </section>
+        <section>
+          <section>
+            <!-- TODO add several tabs illustration -->
+            <h2>What you will learn</h2>
+            <p>
+              Easy send messages between tabs
+            </p>
+          </section>
+          <section>
+            A lot of users have several monitors, especially at work
+            <br />
+            Example with map application
+          </section>
+          <section>
+            case management system with cases on one tab and details on another synced
+          </section>
+        </section>
+        <section>
+          <pre class=""><code class="TypeScript" data-trim contenteditable>
+const channel = new BroadcastChannel('test_channel');
+					</code></pre>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+bc.onmessage = function (message) { console.log(message); }
+					</code></pre>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+channel.postMessage('This is a test message.');
+					</code></pre>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+bc.close();
+					</code></pre>
+					<h3 class="fragment">
+						That's it!
+					</h3>
+				</section>
+				<section>
+					demo?
+				</section>
+				<section>
+					<section>
+						Core concepts
+					</section>
+					<section>
+						Multicasting
+						Master vs slave
+						Any can recieve
+					</section>
+					<section>
+						Same origin
+					</section>
+					<section>
+						low priority, first to be delayed when tab under load
+						Based on personal experience
+					</section>
+					<section>
+						The same tab cant recive a message it sendt
+						Will anoy you when debugging
+					</section>
+				</section>
+				<section>
+					Consider a wrapper
+				</section>
+				<section>
+					Next video will deep dive and show how to combine with RxJS and Angular
+				</section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        history: true,
+        hash: true,
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/highlight/highlight.js" },
+          { src: "plugin/notes/notes.js", async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
