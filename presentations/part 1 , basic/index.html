@@ -50,10 +50,32 @@
         text-transform: none !important;
       }
 
-      .controls,
-      .progress {
-        /* Add for recording */
-        /* opacity: 0 !important; */
+      .flexrox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .browser-img {
+        width: 100px;
+        height: 100px;
+        margin: 0px !important;
+        margin-right: 10px !important;
+        background: unset !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .big-emoji {
+        font-size: 100px;
+      }
+
+      .halfgone {
+        opacity: 0.5;
+      }
+
+      .rxjsc {
+        color: #c1185a;
       }
     </style>
   </head>
@@ -70,67 +92,158 @@
         <section>
           <section>
             <!-- TODO add several tabs illustration -->
-            <h2>What you will learn</h2>
-            <p>
-              Easy send messages between tabs
-            </p>
+            <h2>What you will <span class="bcc">learn</span></h2>
+            <p class="fragment">The entiery API, in <span class="bcc">4 lines of code</span></p>
+            <p class="fragment">Transforming a solution to a <span class="bcc">multi tab application</span></p>
           </section>
           <section>
-            A lot of users have several monitors, especially at work
+            <h1>The <span class="bcc">problem</span></h1>
+          </section>
+          <section>
+            <img src="media/screens.jpg" />
+            <!-- A lot of users have several monitors, especially at work -->
             <br />
-            Example with map application
+          </section>
+          <section data-background="media/map-application.png">
+            <!-- <img src="media/map-application.png" /> -->
           </section>
           <section>
-            case management system with cases on one tab and details on another synced
+            <h2>Case management <span class="bcc">systems</span></h2>
+            <h3 class="fragment">List of cases</h3>
+            <h3 class="fragment">Case details</h3>
+            <h3 class="fragment">Case history</h3>
+            <h3 class="fragment">Case actions</h3>
+            <h3 class="fragment">Case map</h3>
+            <h3 class="fragment">All in <span class="bcc">one</span> Tab</h3>
           </section>
         </section>
         <section>
-          <pre class=""><code class="TypeScript" data-trim contenteditable>
+          <h3>The <span class="bcc">BroadcastChannel</span> API</h3>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 const channel = new BroadcastChannel('test_channel');
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-bc.onmessage = function (message) { console.log(message); }
+channel.onmessage = function (message) { console.log(message); }
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 channel.postMessage('This is a test message.');
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-bc.close();
+channel.close();
 					</code></pre>
-					<h3 class="fragment">
-						That's it!
-					</h3>
-				</section>
-				<section>
-					demo?
-				</section>
-				<section>
-					<section>
-						Core concepts
-					</section>
-					<section>
-						Multicasting
-						Master vs slave
-						Any can recieve
-					</section>
-					<section>
-						Same origin
-					</section>
-					<section>
-						low priority, first to be delayed when tab under load
-						Based on personal experience
-					</section>
-					<section>
-						The same tab cant recive a message it sendt
-						Will anoy you when debugging
-					</section>
-				</section>
-				<section>
-					Consider a wrapper
-				</section>
-				<section>
-					Next video will deep dive and show how to combine with RxJS and Angular
-				</section>
+          <h3 class="fragment bcc">
+            That's it!
+          </h3>
+        </section>
+        <section>
+          demo?
+        </section>
+        <section>
+          <section>
+            <h1><span class="bcc">Core</span> concepts</h1>
+          </section>
+          <section>
+            <h2 class="bcc">Multicasting</h2>
+            <img src="media/Multicast.svg" style="max-height: 55vh;" />
+            <!-- Slaves and master -->
+          </section>
+          <section>
+            <h2>Same <span class="bcc">origin</span> only</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td><span class="bcc">example</span>.com</td>
+                  <td>✔️</td>
+                </tr>
+                <tr class="fragment">
+                  <td><span class="bcc">example</span>.com/subroute</td>
+                  <td>✔️</td>
+                </tr>
+                <tr class="fragment">
+                  <td>blog.<span class="bcc">example</span>.com</td>
+                  <td>❌</td>
+                </tr>
+                <tr class="fragment">
+                  <td><span class="bcc">example</span>.com:1337</td>
+                  <td>❌</td>
+                </tr>
+                <tr class="fragment">
+                  <td>v2.<span class="bcc">example</span>.com</td>
+                  <td>❌</td>
+                </tr>
+                <tr class="fragment">
+                  <td>vg.com</td>
+                  <td>❌</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="fragment">Same scheme, host and port</h3>
+            <h3 class="fragment">Works on <span class="bcc">localhost</span></h3>
+          </section>
+          <section>
+            <h2>BroadcastChannel has <span class="bcc">low priority</span></h2>
+            <h3 class="fragment">Delayed when tab under <span class="bcc">heavy load</span></h3>
+          </section>
+          <section>
+            <h2><span class="bcc">Can't</span> send and receive the same message</h2>
+            <h3 class="fragment">No need to <span class="bcc">filter</span> out own message</h3>
+            <h3 class="fragment">Need to remember while <span class="bcc">debugging</span></h3>
+          </section>
+        </section>
+        <section>
+          <h2>Don't know who <span class="bcc">received</span> message</h2>
+          <h3 class="fragment">Need to handle it ourself</h3>
+          <!--  todo no tab response questionmark -->
+        </section>
+        <section>
+          <h2>Can be achieved with a <span class="bcc">backend</span></h2>
+          <h3 class="fragment">Significantly <span class="bcc">harder</span></h3>
+          <h3 class="fragment">Higher <span class="bcc">complexity</span></h3>
+          <h3 class="fragment">Using the BroadcastChannel API is <span class="bcc">easier</span></h3>
+          <h3 class="fragment"><span class="bcc">100%</span> frontend solution</h3>
+        </section>
+        <section>
+          <h2>
+            Browser support
+          </h2>
+          <table>
+            <tbody>
+              <tr>
+                <td class="big-emoji">✔️</td>
+                <td class="">
+                  <div class="flexrox">
+                    <img src="media/browsers/chrome.svg" class="browser-img fragment" />
+                    <img src="media/browsers/ff.svg" class="browser-img fragment" />
+                    <img src="media/browsers/opera icon.svg" class="browser-img fragment" />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="big-emoji">❌</td>
+                <td class="">
+                  <div class="flexrox">
+                    <img src="media/browsers/ie11.svg" class="browser-img fragment" />
+                    <img src="media/browsers/safari.svg" class="browser-img fragment" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Make it an <span class="bcc">alternative</span></h2>
+          <h3 class="fragment">Not everyone has <span class="bcc">several</span> screens</h3>
+          <h3 class="fragment">Not everyone <span class="bcc">wants</span> a multi tab solution</h3>
+          <!-- optional flow -->
+        </section>
+        <section>
+          <h2>Consider <span class="bcc">wrapping</span></h2>
+          <h3 class="fragment">For example with <span class="rxjsc">RxJS</span></h3>
+          <h3 class="fragment">Will provide in <span class="bcc">next</span> video</h3>
+        </section>
+        <section>
+          Next video will deep dive and show how to combine with RxJS and Angular
+        </section>
       </div>
     </div>
 
@@ -143,6 +256,8 @@ bc.close();
       Reveal.initialize({
         history: true,
         hash: true,
+        controls: false,
+        progress: false,
         dependencies: [
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
