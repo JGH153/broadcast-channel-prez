@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Broadcast Handler API</title>
+		<link rel="stylesheet" href="normalize.css">
+		<link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Broadcast Handler API Demo</h1>
+    <button onclick="sendMessage()">
+      Send
+    </button>
+    <div id="message-container"></div>
+
+    <script>
+      const channelName = "myChannel";
+      const channel = new BroadcastChannel(channelName);
+      const messageContainer = document.getElementById("message-container");
+
+      channel.onmessage = message => {
+				console.log('new message');
+				messageContainer.innerHTML = messageContainer.innerHTML + "<br>" + message.data;
+      };
+
+      function sendMessage() {
+        channel.postMessage("Hello");
+      }
+    </script>
+  </body>
+</html>
