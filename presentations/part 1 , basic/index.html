@@ -66,6 +66,14 @@
         box-shadow: none !important;
       }
 
+      .no-img-outline {
+        margin: 0px !important;
+        margin-right: 10px !important;
+        background: unset !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
       .big-emoji {
         font-size: 100px;
       }
@@ -77,6 +85,19 @@
       .rxjsc {
         color: #c1185a;
       }
+
+      .tab-and-arrow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+      }
+
+      .hidden-filler {
+        opacity: 0;
+        user-select: none;
+      }
     </style>
   </head>
   <body>
@@ -85,6 +106,9 @@
         <section>
           <h1 class="normalcase"><span class="bcc">Broadcast Channel</span> API</h1>
           <h3>One solution, several tabs</h3>
+          <aside class="notes">
+            Broadcast channel api The perfect api for creating a multi tab solution
+          </aside>
         </section>
         <section>
           <h2>The <span class="bcc">best</span> way to send messages between browser <span class="bcc">tabs</span></h2>
@@ -95,6 +119,11 @@
             <h2>What you will <span class="bcc">learn</span></h2>
             <p class="fragment">The entiery API, in <span class="bcc">4 lines of code</span></p>
             <p class="fragment">Transforming a solution to a <span class="bcc">multi tab application</span></p>
+            <div class="fragment tab-and-arrow">
+              <img class="no-img-outline" src="media/tabs/tab.png" style="width: 300px;" />
+              <img class="no-img-outline" src="media/tabs/arrows.png" style="width: 140px;" />
+              <img class="no-img-outline" src="media/tabs/tab.png" style="width: 300px;" />
+            </div>
           </section>
           <section>
             <h1>The <span class="bcc">problem</span></h1>
@@ -102,9 +131,14 @@
           <section>
             <img src="media/screens.jpg" />
             <!-- A lot of users have several monitors, especially at work -->
-            <br />
+            <h3 class="fragment">Especially at <span class="bcc">work</span></h3>
           </section>
-          <section data-background="media/map-application.png">
+          <section data-background="media/map-application.png" style="top: 0px !important">
+            <h1 class="bcc">One tab, one solution</h1>
+            <h2 class="hidden-filler">Fill</h2>
+            <h2 class="hidden-filler">Fill</h2>
+            <h2 class="hidden-filler">Fill</h2>
+            <h2 class="hidden-filler">Fill</h2>
             <!-- <img src="media/map-application.png" /> -->
           </section>
           <section>
@@ -114,8 +148,13 @@
             <h3 class="fragment">Case history</h3>
             <h3 class="fragment">Case actions</h3>
             <h3 class="fragment">Case map</h3>
-            <h3 class="fragment">All in <span class="bcc">one</span> Tab</h3>
+            <h3 class="fragment">All in <span class="bcc">one</span> tab/page</h3>
           </section>
+        </section>
+        <section>
+          <h2>Running out of screen <span class="bcc">real-estate</span></h2>
+          <h2 class="fragment">Splitting into pages is <span class="bcc">slower</span></h2>
+          <h1 class="fragment">The <span class="bcc">solution</span>?</h1>
         </section>
         <section>
           <h3>The <span class="bcc">BroadcastChannel</span> API</h3>
@@ -136,12 +175,18 @@ channel.close();
           </h3>
         </section>
         <section>
-          demo?
+          <h1>Time for <span class="bcc">code</span></h1>
         </section>
-        <section>
-          MessageEvent 
-          https://docs.w3cub.com/dom/event/istrusted/
-        </section>
+        <!-- <section>
+          <h2>
+            The
+            <span class="bcc">
+              MessageEvent 
+            </span>
+            object
+          </h2>
+          MessageEvent  https://docs.w3cub.com/dom/event/istrusted/
+        </section> -->
         <section>
           <section>
             <h1><span class="bcc">Core</span> concepts</h1>
@@ -171,17 +216,19 @@ channel.close();
                   <td><span class="bcc">example</span>.com:1337</td>
                   <td>❌</td>
                 </tr>
-                <tr class="fragment">
+                <!-- <tr class="fragment">
                   <td>v2.<span class="bcc">example</span>.com</td>
                   <td>❌</td>
-                </tr>
+                </tr> -->
                 <tr class="fragment">
                   <td>vg.com</td>
                   <td>❌</td>
                 </tr>
               </tbody>
             </table>
-            <h3 class="fragment">Same scheme, host and port</h3>
+            <h3 class="fragment">
+              Same <span class="bcc">scheme</span>, <span class="bcc">host</span> and <span class="bcc">port</span>
+            </h3>
             <h3 class="fragment">Works on <span class="bcc">localhost</span></h3>
           </section>
           <section>
@@ -195,26 +242,13 @@ channel.close();
           </section>
         </section>
         <section>
-          <h2>Don't know who <span class="bcc">received</span> message</h2>
-          <h3 class="fragment">Need to handle it ourself</h3>
+          <h2>Don't know who <span class="bcc">sent</span> the message</h2>
+          <h2 class="fragment">Don't know who <span class="bcc">received</span> message</h2>
+          <h3 class="fragment">Need to <span class="bcc">handle</span> it ourself</h3>
           <!--  todo no tab response questionmark -->
         </section>
         <section>
-          <h2>Alternatives</h2>
-          <h3>Local storage</h3>
-        </section>
-        <section>
-          <h2>Can be achieved with a <span class="bcc">backend</span></h2>
-          <h3 class="fragment">Significantly <span class="bcc">harder</span></h3>
-          <h3 class="fragment">Higher <span class="bcc">complexity</span></h3>
-          <h3 class="fragment">Using the BroadcastChannel API is <span class="bcc">easier</span></h3>
-          <h3 class="fragment"><span class="bcc">100%</span> frontend solution</h3>
-        </section>
-        
-        <section>
-          <h2>
-            Browser support
-          </h2>
+          <h2>Browser <span class="bcc">support</span></h2>
           <table>
             <tbody>
               <tr>
@@ -224,6 +258,7 @@ channel.close();
                     <img src="media/browsers/chrome.svg" class="browser-img fragment" />
                     <img src="media/browsers/ff.svg" class="browser-img fragment" />
                     <img src="media/browsers/opera icon.svg" class="browser-img fragment" />
+                    <img src="media/browsers/edge.svg" class="browser-img fragment" />
                   </div>
                 </td>
               </tr>
@@ -238,10 +273,26 @@ channel.close();
               </tr>
             </tbody>
           </table>
+          <h2 class="fragment">Can <span class="bcc">polyfill</span></h2>
+          <!-- https://bugs.webkit.org/show_bug.cgi?id=161472 -->
         </section>
         <section>
-          Can use in web worker
+          <h2 class="bcc">Alternatives</h2>
+          <h3 class="fragment">Local storage -> best <span class="bcc">browser</span> support</h3>
+          <h3 class="fragment">Channel Messaging API -> only <span class="bcc">iframe</span></h3>
+          <h3 class="fragment">Shared Worker -> More <span class="bcc">messy</span></h3>
+          <!-- Channel Messaging API requires iframe -->
         </section>
+        <section>
+          <h2>Can be achieved with a <span class="bcc">backend</span></h2>
+          <h3 class="fragment">Significantly <span class="bcc">harder</span></h3>
+          <h3 class="fragment">Higher <span class="bcc">complexity</span></h3>
+          <h3 class="fragment">Using the BroadcastChannel API is <span class="bcc">easier</span></h3>
+          <h3 class="fragment"><span class="bcc">100%</span> frontend solution</h3>
+        </section>
+        <!-- <section>
+          Can use in web worker
+        </section> -->
         <section>
           <h2>Make it an <span class="bcc">alternative</span></h2>
           <h3 class="fragment">Not everyone has <span class="bcc">several</span> screens</h3>

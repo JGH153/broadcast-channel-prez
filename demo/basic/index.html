@@ -20,13 +20,15 @@
       const messageContainer = document.getElementById("message-container");
 
       channel.onmessage = message => {
-				console.log('new message');
+				console.log('new message', message);
 				messageContainer.innerHTML = messageContainer.innerHTML + "<br>" + message.data;
       };
 
       function sendMessage() {
         channel.postMessage("Hello");
       }
+
+      sendMessage();
     </script>
   </body>
 </html>
