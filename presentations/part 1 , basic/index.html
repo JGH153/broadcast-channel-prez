@@ -105,6 +105,10 @@
       .arrows-icon {
         width: 100px;
       }
+
+      .angular {
+        color: #dd0031 !important;
+      }
     </style>
   </head>
   <body>
@@ -114,7 +118,7 @@
           <h1 class="normalcase"><span class="bcc">Broadcast Channel</span> API</h1>
           <h3>One solution, several tabs</h3>
           <aside class="notes">
-            Broadcast channel api The perfect api for creating a multi tab solution
+            Broadcast channel api, The perfect solution for creating a multi tab application
           </aside>
         </section>
         <section>
@@ -125,7 +129,7 @@
             <!-- TODO add several tabs illustration -->
             <h2>What you will <span class="bcc">learn</span></h2>
             <p class="fragment">The entiery API, in <span class="bcc">4 lines of code</span></p>
-            <p class="fragment">Transforming a solution to a <span class="bcc">multi tab application</span></p>
+            <p class="fragment">Transforming a solution into a <span class="bcc">multi tab application</span></p>
             <div class="fragment tab-and-arrow">
               <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
               <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
@@ -157,16 +161,18 @@
             <h3 class="fragment">Case history</h3>
             <h3 class="fragment">Case actions</h3>
             <h3 class="fragment">Case map</h3>
-            <h3 class="fragment">All in <span class="bcc">one</span> tab/page</h3>
+            <h3 class="fragment">All in <span class="bcc">one</span> tab</h3>
           </section>
         </section>
         <section>
           <h2>Running out of screen <span class="bcc">real-estate</span></h2>
           <h2 class="fragment">Splitting screen into pages is <span class="bcc">slower</span></h2>
+          <!-- FIX -->
+          <h2 class="fragment">Want to <span class="bcc">view</span> it all at the same time?</h2>
           <h1 class="fragment">The <span class="bcc">solution</span>?</h1>
         </section>
         <section>
-          <h3>The <span class="bcc">BroadcastChannel</span> API</h3>
+          <h2>The <span class="bcc">BroadcastChannel</span> API</h2>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 const channel = new BroadcastChannel('test_channel');
 					</code></pre>
@@ -179,9 +185,9 @@ channel.postMessage('This is a test message');
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 channel.close();
 					</code></pre>
-          <h3 class="fragment bcc">
+          <h2 class="fragment bcc">
             That's it!
-          </h3>
+          </h2>
         </section>
         <section>
           <h1>Lets see it in <span class="bcc">action</span></h1>
@@ -230,27 +236,23 @@ channel.close();
                   <td><span class="bcc">example</span>.com:1337</td>
                   <td>❌</td>
                 </tr>
-                <!-- <tr class="fragment">
-                  <td>v2.<span class="bcc">example</span>.com</td>
-                  <td>❌</td>
-                </tr> -->
                 <tr class="fragment">
                   <td>vg.com</td>
                   <td>❌</td>
                 </tr>
               </tbody>
             </table>
+            <h3 class="fragment">Works on <span class="bcc">localhost</span></h3>
             <h3 class="fragment">
               Same <span class="bcc">scheme</span>, <span class="bcc">host</span> and <span class="bcc">port</span>
             </h3>
-            <h3 class="fragment">Works on <span class="bcc">localhost</span></h3>
           </section>
           <section>
             <h2>BroadcastChannel has <span class="bcc">low priority</span></h2>
             <h3 class="fragment">Delayed when tab under <span class="bcc">heavy load</span></h3>
           </section>
           <section>
-            <h2><span class="bcc">Can't</span> send and receive the same message</h2>
+            <h3><span class="bcc">Can't</span> send and receive the same message</h3>
             <h3 class="fragment">No need to <span class="bcc">filter</span> out own message</h3>
             <h3 class="fragment">Need to remember while <span class="bcc">debugging</span></h3>
           </section>
@@ -258,8 +260,7 @@ channel.close();
         <section>
           <h2>Don't know who <span class="bcc">sent</span> the message</h2>
           <h2 class="fragment">Don't know who <span class="bcc">received</span> message</h2>
-          <h3 class="fragment">Need to <span class="bcc">handle</span> it ourself</h3>
-          <!--  todo no tab response questionmark -->
+          <h3 class="fragment">Need to <span class="bcc">handle</span> it yourself</h3>
         </section>
         <section>
           <h2>Browser <span class="bcc">support</span></h2>
@@ -300,7 +301,7 @@ channel.close();
 
           <h3 class="fragment">Shared Worker -> More <span class="bcc">messy</span></h3>
 
-          broadcast channel best in my opinion as ling as you can live without safari or with polyfill
+          <!-- broadcast channel best in my opinion as ling as you can live without safari or with polyfill -->
         </section>
         <section>
           <h2>Can be achieved with a <span class="bcc">backend</span></h2>
@@ -324,13 +325,14 @@ channel.close();
           <h3 class="fragment">Will provide in <span class="bcc">next</span> video</h3>
         </section>
         <section>
-          <h2>Subscribe for part 2</h2>
-          <h3>Broadcast channel API</h3>
-          <h3>With RxJS and Angular</h3>
+          <h2>Subscribe for <span class="bcc">part 2</span></h2>
+          <h3 class="fragment"><span class="bcc">Advanced</span> Broadcast channel API</h3>
+          <h3 class="fragment">With <span class="rxjsc">RxJS</span> and <span class="angular">Angular</span></h3>
         </section>
         <section>
-          <h2>Broadcast channel API</h2>
-          <!--  TODO outro -->
+          <h1><span class="bcc">Broadcast channel</span> API</h1>
+          <!--  that was the basics of the broadcast channel api -->
+          <!--  thanks for watchin, and i hope you wil love this simple api just as much as i do -->
         </section>
       </div>
     </div>
