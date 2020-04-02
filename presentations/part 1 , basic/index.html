@@ -98,6 +98,13 @@
         opacity: 0;
         user-select: none;
       }
+
+      .tab-icon {
+        width: 200px;
+      }
+      .arrows-icon {
+        width: 100px;
+      }
     </style>
   </head>
   <body>
@@ -120,9 +127,11 @@
             <p class="fragment">The entiery API, in <span class="bcc">4 lines of code</span></p>
             <p class="fragment">Transforming a solution to a <span class="bcc">multi tab application</span></p>
             <div class="fragment tab-and-arrow">
-              <img class="no-img-outline" src="media/tabs/tab.png" style="width: 300px;" />
-              <img class="no-img-outline" src="media/tabs/arrows.png" style="width: 140px;" />
-              <img class="no-img-outline" src="media/tabs/tab.png" style="width: 300px;" />
+              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
+              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
+              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
+              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
+              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
             </div>
           </section>
           <section>
@@ -153,7 +162,7 @@
         </section>
         <section>
           <h2>Running out of screen <span class="bcc">real-estate</span></h2>
-          <h2 class="fragment">Splitting into pages is <span class="bcc">slower</span></h2>
+          <h2 class="fragment">Splitting screen into pages is <span class="bcc">slower</span></h2>
           <h1 class="fragment">The <span class="bcc">solution</span>?</h1>
         </section>
         <section>
@@ -162,10 +171,10 @@
 const channel = new BroadcastChannel('test_channel');
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-channel.onmessage = function (message) { console.log(message); }
+channel.onmessage = function (message) { console.log(message.data); }
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-channel.postMessage('This is a test message.');
+channel.postMessage('This is a test message');
 					</code></pre>
           <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 channel.close();
@@ -173,6 +182,9 @@ channel.close();
           <h3 class="fragment bcc">
             That's it!
           </h3>
+        </section>
+        <section>
+          <h1>Lets see it in <span class="bcc">action</span></h1>
         </section>
         <section>
           <h1>Time for <span class="bcc">code</span></h1>
@@ -193,8 +205,10 @@ channel.close();
           </section>
           <section>
             <h2 class="bcc">Multicasting</h2>
-            <img src="media/Multicast.svg" style="max-height: 55vh;" />
+            <img src="media/Multicast.svg" style="max-height: 39vh;" />
+            <!-- cutaway to tabs messaging rach other -->
             <!-- Slaves and master -->
+            <h3 class="fragment">Master and slaves</h3>
           </section>
           <section>
             <h2>Same <span class="bcc">origin</span> only</h2>
@@ -279,9 +293,14 @@ channel.close();
         <section>
           <h2 class="bcc">Alternatives</h2>
           <h3 class="fragment">Local storage -> best <span class="bcc">browser</span> support</h3>
+          <!-- slower, more error prone and data leeage -->
+
           <h3 class="fragment">Channel Messaging API -> only <span class="bcc">iframe</span></h3>
-          <h3 class="fragment">Shared Worker -> More <span class="bcc">messy</span></h3>
           <!-- Channel Messaging API requires iframe -->
+
+          <h3 class="fragment">Shared Worker -> More <span class="bcc">messy</span></h3>
+
+          broadcast channel best in my opinion as ling as you can live without safari or with polyfill
         </section>
         <section>
           <h2>Can be achieved with a <span class="bcc">backend</span></h2>
@@ -305,7 +324,13 @@ channel.close();
           <h3 class="fragment">Will provide in <span class="bcc">next</span> video</h3>
         </section>
         <section>
-          Next video will deep dive and show how to combine with RxJS and Angular
+          <h2>Subscribe for part 2</h2>
+          <h3>Broadcast channel API</h3>
+          <h3>With RxJS and Angular</h3>
+        </section>
+        <section>
+          <h2>Broadcast channel API</h2>
+          <!--  TODO outro -->
         </section>
       </div>
     </div>
