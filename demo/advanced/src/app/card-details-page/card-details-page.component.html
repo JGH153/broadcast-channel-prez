@@ -1,0 +1,9 @@
+<ng-container *ngIf="activeCard">
+  <app-card class="card big" [title]="activeCard.name" [imageUrl]="'assets/pondus/' + activeCard.imageName" [showButtons]="true">
+    {{content}}
+  </app-card>
+</ng-container>
+
+<button mat-fab  color="primary" class="fab" (click)="addCard()">
+	<mat-icon>add_circle_outline</mat-icon>
+</button>

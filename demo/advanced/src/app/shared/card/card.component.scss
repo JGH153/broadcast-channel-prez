@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  // padding: 20px;
+}
+
+.card {
+  max-width: 300px;
+}
+:host(.big) .card {
+  max-width: 700px;
+}
+
+.card-img {
+  // max-width: 300px;
+  // max-height: 300px;
+}
+
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+img {
+  image-orientation: from-image;
+}

@@ -1,0 +1,22 @@
+.cards {
+	display: grid;
+	gap: 1rem;
+	padding: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+.card {
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.05);
+	}
+	&:active {
+		transform: scale(0.95);
+	}
+}
+
+.fab {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
