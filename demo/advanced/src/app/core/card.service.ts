@@ -11,7 +11,7 @@ export class CardService {
     for (let i = 0; i < 12; i++) {
       this.cards.push({
         id: i,
-        name: 'Pondus' + i,
+        name: 'Pondus ' + (i + 1),
         imageName: i + '.jpg',
         content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni suscipit alias dolor! Laborum facere quo rem quis
         labore ipsum sint accusamus magnam rerum, ducimus et repudiandae doloremque ad qui iure?`,

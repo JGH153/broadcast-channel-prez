@@ -118,229 +118,50 @@
           <h1><span class="bcc">Advanced</span> Broadcast channel API</h1>
           <h2>With <span class="rxjsc">RxJS</span> and <span class="angular">Angular</span></h2>
         </section>
-        <section>
-          <h2>The <span class="bcc">best</span> way to send messages between browser <span class="bcc">tabs</span></h2>
-        </section>
-        <section>
-          <section>
-            <!-- TODO add several tabs illustration -->
-            <h2>What you will <span class="bcc">learn</span></h2>
-            <p class="fragment">The entiery API, in <span class="bcc">4 lines of code</span></p>
-            <p class="fragment">Transforming a solution into a <span class="bcc">multi tab application</span></p>
-            <div class="fragment tab-and-arrow">
-              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
-              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
-              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
-              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
-              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
-            </div>
-          </section>
-          <section>
-            <h1>The <span class="bcc">problem</span></h1>
-          </section>
-          <section>
-            <img src="media/screens.jpg" />
-            <!-- A lot of users have several monitors, especially at work -->
-            <h3 class="fragment">Especially at <span class="bcc">work</span></h3>
-          </section>
-          <section data-background="media/map-application.png" style="top: 0px !important">
-            <h1 class="bcc">One tab, one solution</h1>
-            <h2 class="hidden-filler">Fill</h2>
-            <h2 class="hidden-filler">Fill</h2>
-            <h2 class="hidden-filler">Fill</h2>
-            <h2 class="hidden-filler">Fill</h2>
-            <!-- <img src="media/map-application.png" /> -->
-          </section>
-          <section>
-            <h2>Case management <span class="bcc">systems</span> 📑</h2>
-            <h3 class="fragment">List of cases</h3>
-            <h3 class="fragment">Case details</h3>
-            <h3 class="fragment">Case history</h3>
-            <h3 class="fragment">Case actions</h3>
-            <h3 class="fragment">Case map</h3>
-            <h3 class="fragment">All in <span class="bcc">one</span> tab</h3>
-          </section>
-        </section>
-        <section>
-          <h2>Running out of screen <span class="bcc">real-estate</span></h2>
-          <h2 class="fragment">Splitting screen into pages is <span class="bcc">slower</span></h2>
-          <!-- FIX -->
-          <h2 class="fragment">Want to <span class="bcc">view</span> it all?</h2>
-          <h1 class="fragment">The <span class="bcc">solution</span>?</h1>
-        </section>
-        <section>
-          <h2>The <span class="bcc">BroadcastChannel</span> API</h2>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-const channel = new BroadcastChannel('test_channel');
-					</code></pre>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-channel.onmessage = function (message) { console.log(message.data); }
-					</code></pre>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-channel.postMessage('This is a test message');
-					</code></pre>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
-channel.close();
-					</code></pre>
-          <h1 class="fragment bcc">
-            That's it!
-          </h1>
-        </section>
-        <section>
-          <h1>Lets see it in <span class="bcc">action</span></h1>
-        </section>
-        <section>
-          <h1>Time for <span class="bcc">code</span></h1>
-        </section>
-        <!-- <section>
-          <h2>
-            The
-            <span class="bcc">
-              MessageEvent 
-            </span>
-            object
-          </h2>
-          MessageEvent  https://docs.w3cub.com/dom/event/istrusted/
-        </section> -->
-        <section>
-          <section>
-            <h1><span class="bcc">Core</span> concepts</h1>
-          </section>
-          <section>
-            <h2 class="bcc">Multicasting</h2>
-            <img src="media/Multicast.svg" style="max-height: 39vh;" />
-            <!-- cutaway to tabs messaging rach other -->
-            <!-- Slaves and master -->
-          </section>
-          <section>
-            <h2 class=""><span class="bcc">Master</span> and <span class="bcc">slaves</span></h2>
-            <div class="fragment tab-and-arrow">
-              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
-              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
-              <img class="no-img-outline tab-icon" src="media/tabs/pond-tab.png" />
-              <img class="no-img-outline arrows-icon" src="media/tabs/arrows.png" />
-              <img class="no-img-outline tab-icon" src="media/tabs/tab.png" />
-            </div>
-          </section>
-          <section>
-            <h2>Same <span class="bcc">origin</span> only</h2>
-            <table>
-              <tbody>
-                <tr>
-                  <td><span class="bcc">example</span>.com</td>
-                  <td>✔️</td>
-                </tr>
-                <tr class="fragment">
-                  <td><span class="bcc">example</span>.com/subroute</td>
-                  <td>✔️</td>
-                </tr>
-                <tr class="fragment">
-                  <td>blog.<span class="bcc">example</span>.com</td>
-                  <td>❌</td>
-                </tr>
-                <tr class="fragment">
-                  <td><span class="bcc">example</span>.com:1337</td>
-                  <td>❌</td>
-                </tr>
-                <tr class="fragment">
-                  <td>vg.com</td>
-                  <td>❌</td>
-                </tr>
-              </tbody>
-            </table>
-            <h3 class="fragment">Works on <span class="bcc">localhost</span></h3>
-            <h3 class="fragment">
-              Same <span class="bcc">scheme</span>, <span class="bcc">host</span> and <span class="bcc">port</span>
-            </h3>
-            <h3 class="fragment">Same <span class="bcc">computer🖥️</span> and <span class="bcc">browser</span></h3>
-          </section>
-          <section>
-            <h2>BroadcastChannel has <span class="bcc">low priority</span></h2>
-            <h3 class="fragment">Delayed when the tab under <span class="bcc">heavy load</span>🔥</h3>
-          </section>
-          <section>
-            <h3><span class="bcc">Can't</span> send and receive the same message</h3>
-            <h3 class="fragment">No need to <span class="bcc">filter</span> out own message</h3>
-            <h3 class="fragment">Need to remember while <span class="bcc">debugging</span></h3>
-          </section>
-        </section>
-        <section>
-          <h2>Don't know who <span class="bcc">sent</span> the message</h2>
-          <h2 class="fragment">Don't know who <span class="bcc">received</span> message</h2>
-          <h3 class="fragment">Need to <span class="bcc">handle</span> it yourself</h3>
-        </section>
-        <section>
-          <h2>Browser <span class="bcc">support</span></h2>
-          <table>
-            <tbody>
-              <tr>
-                <td class="big-emoji">✔️</td>
-                <td class="">
-                  <div class="flexrox">
-                    <img src="media/browsers/chrome.svg" class="browser-img fragment" />
-                    <img src="media/browsers/ff.svg" class="browser-img fragment" />
-                    <img src="media/browsers/opera icon.svg" class="browser-img fragment" />
-                    <img src="media/browsers/edge.svg" class="browser-img fragment" />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="big-emoji">❌</td>
-                <td class="">
-                  <div class="flexrox">
-                    <img src="media/browsers/ie11.svg" class="browser-img fragment" />
-                    <img src="media/browsers/safari.svg" class="browser-img fragment" />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <h2 class="fragment">Can <span class="bcc">polyfill</span></h2>
-          <!-- https://bugs.webkit.org/show_bug.cgi?id=161472 -->
-        </section>
-        <section>
-          <h2 class="bcc">Alternatives</h2>
-          <h3 class="fragment">Local storage -> best <span class="bcc">browser</span> support 👍</h3>
-          <!-- slower, more error prone and data leeage -->
 
-          <h3 class="fragment">Channel Messaging API -> only <span class="bcc">iframe</span> 👎</h3>
-          <!-- Channel Messaging API requires iframe -->
+        <section>
+          <h2>Should watch part one first</h2>
+        </section>
 
-          <h3 class="fragment">Shared Worker -> More <span class="bcc">messy</span> 👎</h3>
+        <section>
+          <h2>What you will learn</h2>
+          <h3>How to use BC in real application</h3>
+          <h2>How to handle many common pitfalls</h2>
+        </section>
 
-          <!-- broadcast channel best in my opinion as ling as you can live without safari or with polyfill -->
-        </section>
         <section>
-          <h2>Can be achieved with a <span class="bcc">backend</span></h2>
-          <h3 class="fragment">Significantly <span class="bcc">harder</span></h3>
-          <h3 class="fragment">Higher <span class="bcc">complexity</span></h3>
-          <h3 class="fragment">Using the BroadcastChannel API is <span class="bcc">easier</span></h3>
-          <h3 class="fragment"><span class="bcc">100%</span> frontend solution</h3>
+          <h1>Demo/Prototype</h1>
         </section>
-        <!-- <section>
-          Can use in web worker
-        </section> -->
+
         <section>
-          <h2>Make it an <span class="bcc">alternative</span></h2>
-          <h3 class="fragment">Not everyone has <span class="bcc">several</span> screens 🖥️🖥️</h3>
-          <h3 class="fragment">Not everyone <span class="bcc">wants</span> a multi tab solution</h3>
-          <!-- optional flow -->
+          <h1>Angular</h1>
+          <h3>Will have a video on that in future (so sub n like)</h3>
+          <h3>Works best with RxJS (build in)</h3>
+          <h3>My prefeerd framework</h3>
         </section>
+
         <section>
-          <h2>Consider <span class="bcc">wrapping</span></h2>
-          <h3 class="fragment">For example with <span class="rxjsc">RxJS</span></h3>
-          <h3 class="fragment">Will provide in <span class="bcc">next</span> video</h3>
+          <section>
+            <h2>Dive into code</h2>
+          </section>
+          <section>
+            <h2>
+              Card service
+            </h2>
+            <h2>
+              Cards page
+            </h2>
+            <h2>
+              Card details
+            </h2>
+            <h2>
+              Broadcast Handler Service
+            </h2>
+          </section>
         </section>
-        <section>
-          <h2>Subscribe for <span class="bcc">part 2</span> 📺</h2>
-          <h3 class="fragment"><span class="bcc">Advanced</span> Broadcast channel API</h3>
-          <h3 class="fragment">With <span class="rxjsc">RxJS</span> and <span class="angular">Angular</span></h3>
-        </section>
+
         <section>
           <h1><span class="bcc">Broadcast channel</span> API</h1>
-          <!--  that was the basics of the broadcast channel api -->
-          <!--  thanks for watchin, and i hope you wil love this 
-            simple api just as much as i do -->
         </section>
       </div>
     </div>
@@ -360,8 +181,8 @@ channel.close();
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
           { src: "plugin/highlight/highlight.js" },
-          { src: "plugin/notes/notes.js", async: true }
-        ]
+          { src: "plugin/notes/notes.js", async: true },
+        ],
       });
     </script>
   </body>
