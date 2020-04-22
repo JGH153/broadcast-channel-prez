@@ -109,6 +109,10 @@
       .angular {
         color: #dd0031 !important;
       }
+
+      .webrtc-orange {
+        color: #ff6600 !important;
+      }
     </style>
   </head>
   <body>
@@ -120,44 +124,103 @@
         </section>
 
         <section>
-          <h2>Should watch part one first</h2>
+          <h1>Watch part <span class="bcc">one</span> first</h1>
         </section>
 
         <section>
-          <h2>What you will learn</h2>
-          <h3>How to use BC in real application</h3>
-          <h2>How to handle many common pitfalls</h2>
+          <h2>What you will <span class="bcc">learn</span></h2>
+          <h3 class="fragment">Practical example of <span class="bcc">Broadcast Channel</span></h3>
+          <h3 class="fragment">Tab to tab communication with <span class="rxjsc">RxJS</span></h3>
+          <h2 class="fragment">The common <span class="bcc">pitfalls</span></h2>
         </section>
 
         <section>
-          <h1>Demo/Prototype</h1>
+          <h1><span class="bcc">Demo</span></h1>
         </section>
 
         <section>
-          <h1>Angular</h1>
-          <h3>Will have a video on that in future (so sub n like)</h3>
-          <h3>Works best with RxJS (build in)</h3>
-          <h3>My prefeerd framework</h3>
+          <h1 class="angular">Angular</h1>
+          <h3 class="fragment">My preferred <span class="bcc">framework</span></h3>
+          <h3 class="fragment">Will have a video in <span class="bcc">future</span></h3>
+          <h3 class="fragment">Works best with <span class="rxjsc">RxJS</span></h3>
         </section>
 
         <section>
           <section>
-            <h2>Dive into code</h2>
+            <h2>Let's dive into the <span class="bcc">code</span></h2>
           </section>
           <section>
             <h2>
               Card service
             </h2>
-            <h2>
+            <h2 class="fragment">
               Cards page
             </h2>
-            <h2>
+            <h2 class="fragment">
               Card details
             </h2>
-            <h2>
+            <h2 class="fragment bcc">
               Broadcast Handler Service
             </h2>
           </section>
+          <section>
+            <h2 class="bcc">Broadcast Handler Service</h2>
+            <h2 class="fragment"><span class="bcc">ACK</span> = acknowledgement</h2>
+            <h2 class="fragment"><span class="bcc">Conformation</span> that the message was received</h2>
+            <h2 class="fragment">Two Generals' <span class="bcc">Problem</span></h2>
+            <h2 class="fragment">Assuming no <span class="bcc">lost</span> message</h2>
+            <!-- <h2 class="fragment">Each message can be received several times</h2> -->
+          </section>
+        </section>
+
+        <section>
+          <h2>More example usages</h2>
+          <h2 class="fragment"><span class="bcc">Stock</span> application</h2>
+          <!-- with stocks synced from one master view? -->
+
+          <h2 class="fragment"><span class="bcc">Youtube</span></h2>
+          <!-- can have the playlist in its own vieo and look for next vieo in own windfow -->
+          <!-- already have solution, but all in one window -->
+        </section>
+
+        <section>
+          <h2>Desktop only</h2>
+          <h3 class="fragment">Multi tab on <span class="bcc">mobile</span> is not good</h3>
+          <h3 class="fragment"><span class="bcc">Work</span> applications</h3>
+        </section>
+
+        <section>
+          <h2>The <span class="bcc">hidden</span> receiver</h2>
+          <h3 class="fragment">Hidden tabs are a <span class="bcc">problem</span></h3>
+          <h3 class="fragment">Can still <span class="bcc">receive</span> messages</h3>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+if(document.visibilityState === 'visible') {
+  // TODO
+}
+         </code></pre>
+          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+if(document.visibilityState === 'hidden') {
+  // TODO
+}
+         </code></pre>
+        </section>
+
+        <section>
+          <h2>The testing <span class="bcc">problem</span></h2>
+          <h3 class="fragment">Really hard to impossible to <span class="bcc">test</span></h3>
+          <h3 class="fragment">E2E like <span class="bcc">cypress</span> have one tab limit</h3>
+          <h3 class="fragment">Need to <span class="bcc">mock and fake</span> for testing</h3>
+        </section>
+
+        <section>
+          <h2>Linked tabs</h2>
+          <h3>User don't know witch talk to eachother</h3>
+        </section>
+
+        <section>
+          <h2>Sending to another <span class="bcc">browsers</span>/<span class="bcc">computers</span></h2>
+          <h1 class="fragment webrtc-orange">WebRTC</h1>
+          <h2 class="fragment">Subscribe for <span class="bcc">video</span> 📺</h2>
         </section>
 
         <section>

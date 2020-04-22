@@ -3,6 +3,8 @@ import { ChannelPacket } from './broadcast-handler-types';
 import { Observable, interval, race, Subject, Subscription, Subscriber } from 'rxjs';
 import { take, tap, filter, finalize } from 'rxjs/operators';
 
+// TODO solution for onlyWhenTabIsVisible with document.visibilityState
+
 // internal use only
 interface ActiveChannel {
   messages: Subject<ChannelPacket>;
