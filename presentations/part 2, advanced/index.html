@@ -27,7 +27,7 @@
       }
 
       .slides {
-        width: 80% !important;
+        width: 82% !important;
       }
 
       .med-text {
@@ -124,7 +124,7 @@
         </section>
 
         <section>
-          <h1>Watch part <span class="bcc">one</span> first</h1>
+          <h1>📺 Watch part <span class="bcc">one</span> first</h1>
         </section>
 
         <section>
@@ -166,7 +166,7 @@
           <section>
             <h2 class="bcc">Broadcast Handler Service</h2>
             <h2 class="fragment"><span class="bcc">ACK</span> = acknowledgement</h2>
-            <h2 class="fragment"><span class="bcc">Conformation</span> that the message was received</h2>
+            <h2 class="fragment"><span class="bcc">Conformation</span> of message</h2>
             <h2 class="fragment">Two Generals' <span class="bcc">Problem</span></h2>
             <h2 class="fragment">Assuming no <span class="bcc">lost</span> message</h2>
             <!-- <h2 class="fragment">Each message can be received several times</h2> -->
@@ -174,7 +174,7 @@
         </section>
 
         <section>
-          <h2>More example usages</h2>
+          <h1>More <span class="bcc">examples</span></h1>
           <h2 class="fragment"><span class="bcc">Stock</span> application</h2>
           <!-- with stocks synced from one master view? -->
 
@@ -184,41 +184,52 @@
         </section>
 
         <section>
-          <h2>Desktop only</h2>
-          <h3 class="fragment">Multi tab on <span class="bcc">mobile</span> is not good</h3>
-          <h3 class="fragment"><span class="bcc">Work</span> applications</h3>
-        </section>
+          <section>
+            <h2>Desktop <span class="bcc">only</span></h2>
+            <h3 class="fragment">Multi tab on <span class="bcc">mobile</span> is not good</h3>
+            <h3 class="fragment"><span class="bcc">Work</span> applications</h3>
+          </section>
 
-        <section>
-          <h2>The <span class="bcc">hidden</span> receiver</h2>
-          <h3 class="fragment">Hidden tabs are a <span class="bcc">problem</span></h3>
-          <h3 class="fragment">Can still <span class="bcc">receive</span> messages</h3>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+          <section>
+            <h2>The <span class="bcc">hidden</span> receiver</h2>
+            <h3 class="fragment">Hidden tabs are a <span class="bcc">problem</span></h3>
+            <h3 class="fragment">Can still <span class="bcc">receive</span> messages</h3>
+            <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 if(document.visibilityState === 'visible') {
   // TODO
 }
          </code></pre>
-          <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
+            <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 if(document.visibilityState === 'hidden') {
   // TODO
 }
          </code></pre>
+          </section>
+
+          <section>
+            <h2>The testing <span class="bcc">problem</span> 🕵️</h2>
+            <h3 class="fragment">Really hard to impossible to <span class="bcc">test</span></h3>
+            <h3 class="fragment">E2E like <span class="bcc">cypress</span> have one tab limit</h3>
+            <h3 class="fragment">Need to <span class="bcc">mock and fake</span> for testing</h3>
+            <h3 class="fragment">Limit what Broadcast channel does</h3>
+            <!-- With for example updating URL, instead of setting data directly -->
+          </section>
+
+          <section>
+            <h1><span class="bcc">Heartbeat</span> ❤️</h1>
+            <h3 class="fragment"><span class="bcc">Repeatedly check</span> if tab present</h3>
+            <h3 class="fragment">Might <span class="bcc">miss</span> tab closing</h3>
+            <h3 class="fragment"><span class="bcc">Unstable</span> and <span class="bcc">unreliable</span></h3>
+          </section>
+
+          <section>
+            <h2><span class="bcc">Linked</span> tabs ⛓️</h2>
+            <h3 class="fragment">User don't know witch <span class="bcc">talk</span> to each other</h3>
+          </section>
         </section>
 
         <section>
-          <h2>The testing <span class="bcc">problem</span></h2>
-          <h3 class="fragment">Really hard to impossible to <span class="bcc">test</span></h3>
-          <h3 class="fragment">E2E like <span class="bcc">cypress</span> have one tab limit</h3>
-          <h3 class="fragment">Need to <span class="bcc">mock and fake</span> for testing</h3>
-        </section>
-
-        <section>
-          <h2>Linked tabs</h2>
-          <h3>User don't know witch talk to eachother</h3>
-        </section>
-
-        <section>
-          <h2>Sending to another <span class="bcc">browsers</span>/<span class="bcc">computers</span></h2>
+          <h2>Sending to another <span class="bcc">computers</span></h2>
           <h1 class="fragment webrtc-orange">WebRTC</h1>
           <h2 class="fragment">Subscribe for <span class="bcc">video</span> 📺</h2>
         </section>
