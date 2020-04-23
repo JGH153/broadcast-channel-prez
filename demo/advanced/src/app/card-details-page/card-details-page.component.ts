@@ -25,16 +25,7 @@ export class CardDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const lorem = new LoremIpsum({
-      sentencesPerParagraph: {
-        max: 6,
-        min: 5,
-      },
-      wordsPerSentence: {
-        max: 12,
-        min: 11,
-      },
-    });
+    const lorem = this.getLoremConfig();
 
     this.activatedRoute.paramMap.subscribe((params) => {
       this.activeCard = this.cardService.cards[params.get('id')];
@@ -51,6 +42,19 @@ export class CardDetailsPageComponent implements OnInit {
     this.broadcastHandlerService.sendMessage(BroadcastChannelName.AddCard, {
       action: 'add',
       data: 'Some new card',
+    });
+  }
+
+  getLoremConfig(): LoremIpsum {
+    return new LoremIpsum({
+      sentencesPerParagraph: {
+        max: 6,
+        min: 5,
+      },
+      wordsPerSentence: {
+        max: 12,
+        min: 11,
+      },
     });
   }
 }

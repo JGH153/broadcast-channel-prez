@@ -128,7 +128,7 @@
         </section>
 
         <section>
-          <h2>What you will <span class="bcc">learn</span></h2>
+          <h1>What you will <span class="bcc">learn</span></h1>
           <h3 class="fragment">Practical example of <span class="bcc">Broadcast Channel</span></h3>
           <h3 class="fragment">Tab to tab communication with <span class="rxjsc">RxJS</span></h3>
           <h2 class="fragment">The common <span class="bcc">pitfalls</span></h2>
@@ -148,27 +148,21 @@
         <section>
           <section>
             <h2>Let's dive into the <span class="bcc">code</span></h2>
+            <h3>All available in <span class="bcc">description</span></h3>
           </section>
           <section>
-            <h2>
-              Card service
-            </h2>
-            <h2 class="fragment">
-              Cards page
-            </h2>
-            <h2 class="fragment">
-              Card details
-            </h2>
-            <h2 class="fragment bcc">
-              Broadcast Handler Service
-            </h2>
+            <h2>Card <span class="bcc">service</span></h2>
+            <h2 class="fragment">Cards <span class="bcc">page</span></h2>
+            <h2 class="fragment">Card details <span class="bcc">page</span></h2>
+            <h2 class="fragment">Broadcast Handler <span class="bcc">Service</span></h2>
           </section>
           <section>
-            <h2 class="bcc">Broadcast Handler Service</h2>
+            <h2 class="">Broadcast Handler <span class="bcc">Service</span></h2>
+            <!--  show code in service -->
             <h2 class="fragment"><span class="bcc">ACK</span> = acknowledgement</h2>
             <h2 class="fragment"><span class="bcc">Conformation</span> of message</h2>
-            <h2 class="fragment">Two Generals' <span class="bcc">Problem</span></h2>
-            <h2 class="fragment">Assuming no <span class="bcc">lost</span> message</h2>
+            <!-- <h2 class="fragment">Two Generals' <span class="bcc">Problem</span></h2>
+            <h2 class="fragment">Assuming no <span class="bcc">lost</span> message</h2> -->
             <!-- <h2 class="fragment">Each message can be received several times</h2> -->
           </section>
         </section>
@@ -186,6 +180,7 @@
         <section>
           <section>
             <h2>Desktop <span class="bcc">only</span></h2>
+            <!--  show market share groth -->
             <h3 class="fragment">Multi tab on <span class="bcc">mobile</span> is not good</h3>
             <h3 class="fragment"><span class="bcc">Work</span> applications</h3>
           </section>
@@ -198,21 +193,13 @@
 if(document.visibilityState === 'visible') {
   // TODO
 }
-         </code></pre>
+            </code></pre>
             <pre class="fragment"><code class="TypeScript" data-trim contenteditable>
 if(document.visibilityState === 'hidden') {
   // TODO
 }
-         </code></pre>
-          </section>
-
-          <section>
-            <h2>The testing <span class="bcc">problem</span> 🕵️</h2>
-            <h3 class="fragment">Really hard to impossible to <span class="bcc">test</span></h3>
-            <h3 class="fragment">E2E like <span class="bcc">cypress</span> have one tab limit</h3>
-            <h3 class="fragment">Need to <span class="bcc">mock and fake</span> for testing</h3>
-            <h3 class="fragment">Limit what Broadcast channel does</h3>
-            <!-- With for example updating URL, instead of setting data directly -->
+            </code></pre>
+            <!-- show BHS code -->
           </section>
 
           <section>
@@ -225,9 +212,20 @@ if(document.visibilityState === 'hidden') {
           </section>
 
           <section>
+            <h2>The testing <span class="bcc">problem</span> 🕵️</h2>
+            <h3 class="fragment">Really hard to impossible to <span class="bcc">test</span></h3>
+            <h3 class="fragment">E2E like <span class="bcc">cypress</span> have one tab limit</h3>
+            <h3 class="fragment">Need to <span class="bcc">mock and fake</span> for testing</h3>
+            <h3 class="fragment"><span class="bcc">Limit</span> what Broadcast channel does</h3>
+            <!-- With for example updating URL, instead of setting data directly -->
+            <!-- show code -->
+          </section>
+
+          <!-- <section>
             <h2><span class="bcc">Linked</span> tabs ⛓️</h2>
             <h3 class="fragment">User don't know witch <span class="bcc">talk</span> to each other</h3>
-          </section>
+             cut to popup showing syced
+          </section> -->
         </section>
 
         <section>
@@ -237,6 +235,7 @@ if(document.visibilityState === 'hidden') {
         </section>
 
         <section>
+          <h1>The advanced</h1>
           <h1><span class="bcc">Broadcast channel</span> API</h1>
         </section>
       </div>
