@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { CardService } from '../core/card.service';
 import { BroadcastHandlerService } from '../core/broadcast-handler/broadcast-handler.service';
@@ -21,7 +21,6 @@ export class CardDetailsPageComponent implements OnInit {
     private cardService: CardService,
     private broadcastHandlerService: BroadcastHandlerService,
     private router: Router,
-    private ngZone: NgZone,
     private snackBar: MatSnackBar
   ) {}
 
@@ -42,20 +41,16 @@ export class CardDetailsPageComponent implements OnInit {
       this.content = lorem.generateParagraphs(4);
     });
 
-    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.OpenCard).subscribe((message) => {
-      if (message.action === 'open') {
-        this.ngZone.run(() => {
-          this.router.navigate(['/', message.data]);
-          this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
-        });
-      }
+    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.OpenCard, 'open').subscribe((message) => {
+      this.router.navigate(['/', message.data]);
+      this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
     });
   }
 
   addCard() {
     this.broadcastHandlerService.sendMessage(BroadcastChannelName.AddCard, {
       action: 'add',
-      data: 'Some new card'
+      data: 'Some new card',
     });
   }
 }

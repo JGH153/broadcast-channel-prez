@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import { ChannelPacket } from './broadcast-handler-types';
+import { Injectable, NgZone } from '@angular/core';
+import { ChannelPacket, ChannelAction } from './broadcast-handler-types';
 import { Observable, interval, race, Subject, Subscription, Subscriber } from 'rxjs';
 import { take, tap, filter, finalize } from 'rxjs/operators';
-
-// TODO solution for onlyWhenTabIsVisible with document.visibilityState
 
 // internal use only
 interface ActiveChannel {
@@ -33,12 +31,21 @@ export class BroadcastHandlerService {
   private readonly channelPrefix = 'BHSC-';
   private activeChannels: ActiveChannel[] = [];
 
+  constructor(private ngZone: NgZone) {}
+
   /** Filters out ACK messages
    * Closes underlying channel on unsubscribe
+   * Will only receive messages when tab is visible
    */
-  getChannelMessages(channelName: BroadcastHandlerChannelName): Observable<ChannelPacket> {
+  getChannelMessages(channelName: BroadcastHandlerChannelName, action?: ChannelAction): Observable<ChannelPacket> {
     return this.getChannelObject(channelName).messages.pipe(
       filter((message) => !message.acknowledgingPreviousMessage),
+      filter((message) => {
+        if (!action) {
+          return true;
+        }
+        return message.action === action;
+      }),
       finalize(() => {
         this.closeChannel(channelName);
       })
@@ -124,7 +131,6 @@ export class BroadcastHandlerService {
           filter((ackMessage: ChannelPacket) => {
             if (ackMessage.targetId === sentMessage.senderId && ackMessage.messageId === sentMessage.messageId) {
               observer.next(true);
-              observer.complete();
               return true;
             }
             return false;
@@ -133,12 +139,11 @@ export class BroadcastHandlerService {
         interval(waitTime).pipe(
           tap(() => {
             observer.next(false);
-            observer.complete();
           })
         )
       )
         .pipe(take(1))
-        .subscribe();
+        .subscribe(() => observer.complete());
     });
   }
 
@@ -172,7 +177,10 @@ export class BroadcastHandlerService {
 
     // emitting messages one time via a subject as onmessage only emits once for each channel
     const subscription = this.getChannelRawMessages(channel, channelName).subscribe((message) => {
-      messagesSubject.next(message);
+      // tell angular so change detection is handled properly
+      this.ngZone.run(() => {
+        messagesSubject.next(message);
+      });
     });
 
     const channelObject: ActiveChannel = {
@@ -194,7 +202,9 @@ export class BroadcastHandlerService {
   ): Observable<ChannelPacket> {
     return new Observable((observer: Subscriber<ChannelPacket>) => {
       channel.onmessage = (messageEvent: MessageEvent) => {
-        this.onNewChannelRawMessage(messageEvent, observer, channelName);
+        if (document.visibilityState === 'visible') {
+          this.onNewChannelRawMessage(messageEvent, observer, channelName);
+        }
       };
       channel.onmessageerror = (error) => {
         console.warn('onmessageerror: ', error);

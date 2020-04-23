@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardService } from '../core/card.service';
 import { Card } from '../shared/models/card.interface';
 import { BroadcastHandlerService } from '../core/broadcast-handler/broadcast-handler.service';
@@ -16,17 +16,14 @@ export class CardsPageComponent implements OnInit {
   constructor(
     private cardService: CardService,
     private broadcastHandlerService: BroadcastHandlerService,
-    private snackBar: MatSnackBar,
-    private ngZone: NgZone
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.cards = this.cardService.cards;
 
-    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.AddCard).subscribe(message => {
-      this.ngZone.run(() => {
-        this.snackBar.open('Adding card', 'Close', { duration: 1000 });
-      });
+    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.AddCard, 'add').subscribe((message) => {
+      this.snackBar.open('Adding card', 'Close', { duration: 1000 });
     });
   }
 
@@ -40,13 +37,10 @@ export class CardsPageComponent implements OnInit {
   }
 
   onTabResponse(received: boolean, cardId: number) {
-    this.ngZone.run(() => {
-      if (received) {
-        this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
-      } else {
-        window.open(window.location.href + '/' + cardId, '_blank');
-      }
-    });
+    if (received) {
+      this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
+    } else {
+      window.open(window.location.href + '/' + cardId, '_blank');
+    }
   }
-
 }
