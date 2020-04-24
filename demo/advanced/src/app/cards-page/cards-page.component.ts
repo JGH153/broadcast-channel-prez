@@ -22,9 +22,11 @@ export class CardsPageComponent implements OnInit {
   ngOnInit(): void {
     this.cards = this.cardService.cards;
 
-    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.AddCard, 'add').subscribe((message) => {
-      this.snackBar.open('Adding card', 'Close', { duration: 1000 });
-    });
+    this.broadcastHandlerService
+      .getChannelMessages(BroadcastChannelName.AddCard, 'add')
+      .subscribe((message) => {
+        this.snackBar.open('Adding card', 'Close', { duration: 1000 });
+      });
   }
 
   cardClicked(cardId: number) {

@@ -32,10 +32,12 @@ export class CardDetailsPageComponent implements OnInit {
       this.content = lorem.generateParagraphs(4);
     });
 
-    this.broadcastHandlerService.getChannelMessages(BroadcastChannelName.OpenCard, 'open').subscribe((message) => {
-      this.router.navigate(['/', message.data]);
-      this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
-    });
+    this.broadcastHandlerService
+      .getChannelMessages(BroadcastChannelName.OpenCard, 'open')
+      .subscribe((message) => {
+        this.router.navigate(['/', message.data]);
+        this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
+      });
   }
 
   addCard() {
