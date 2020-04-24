@@ -1,10 +1,14 @@
 <!-- <h1>Cards!</h1> -->
 
 <section class="cards">
-	<ng-container *ngFor="let card of cards">
-		<app-card class="card" [title]="card.name" [imageUrl]="'assets/pondus/' + card.imageName" (click)="cardClicked(card.id)">
-			{{card.content}}
-		</app-card>
-
-	</ng-container>
+  <ng-container *ngFor="let card of cards">
+    <app-card
+      class="card"
+      [title]="card.name"
+      [imageUrl]="'assets/pondus/' + card.imageName"
+      (click)="cardClicked(card.id)"
+    >
+      {{ card.content }}
+    </app-card>
+  </ng-container>
 </section>
