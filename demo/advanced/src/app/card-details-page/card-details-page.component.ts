@@ -38,6 +38,12 @@ export class CardDetailsPageComponent implements OnInit {
         this.router.navigate(['/', message.data]);
         this.snackBar.open('💻 Synced 💻', 'Close', { duration: 1000 });
       });
+
+    window.onbeforeunload = () => {
+      this.broadcastHandlerService.sendMessage(BroadcastChannelName.TabClosed, {
+        action: 'tab closed',
+      });
+    };
   }
 
   addCard() {

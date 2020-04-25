@@ -27,6 +27,12 @@ export class CardsPageComponent implements OnInit {
       .subscribe((message) => {
         this.snackBar.open('Adding card', 'Close', { duration: 1000 });
       });
+
+    this.broadcastHandlerService
+      .getChannelMessages(BroadcastChannelName.TabClosed, 'tab closed')
+      .subscribe((message) => {
+        this.snackBar.open('Tab closed 👋', 'Close', { duration: 2000 });
+      });
   }
 
   cardClicked(cardId: number) {
