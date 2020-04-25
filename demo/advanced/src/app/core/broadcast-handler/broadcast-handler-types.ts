@@ -1,4 +1,11 @@
-export type ChannelAction = 'open' | 'need data' | 'send next' | 'overwrite data' | 'reset' | 'add' | 'tab closed';
+export type ChannelAction =
+  | 'open'
+  | 'need data'
+  | 'send next'
+  | 'overwrite data'
+  | 'reset'
+  | 'add'
+  | 'tab closed';
 
 export interface ChannelPacket extends ChannelPacketInternal {
   data?: unknown | null; // the message content

@@ -1,6 +1,13 @@
 import { Injectable, NgZone } from '@angular/core';
 import { ChannelPacket, ChannelAction } from './broadcast-handler-types';
-import { Observable, interval, race, Subject, Subscription, Subscriber } from 'rxjs';
+import {
+  Observable,
+  interval,
+  race,
+  Subject,
+  Subscription,
+  Subscriber,
+} from 'rxjs';
 import { take, tap, filter, finalize } from 'rxjs/operators';
 
 // internal use only
@@ -23,8 +30,8 @@ type BroadcastHandlerChannelName = string;
   providedIn: 'root',
 })
 export class BroadcastHandlerService {
-  readonly ackWaitTime = 250; // consider lowering
-  readonly ackWaitTimeExtra = 2000; // consider increasing
+  readonly ackWaitTime = 500; // consider changing if unstable
+  readonly ackWaitTimeExtra = 2000;
 
   private mySenderId = (Math.random() * 10000000).toString();
 
@@ -37,7 +44,10 @@ export class BroadcastHandlerService {
    * Closes underlying channel on unsubscribe
    * Will only receive messages when tab is visible
    */
-  getChannelMessages(channelName: BroadcastHandlerChannelName, action?: ChannelAction): Observable<ChannelPacket> {
+  getChannelMessages(
+    channelName: BroadcastHandlerChannelName,
+    action?: ChannelAction
+  ): Observable<ChannelPacket> {
     return this.getChannelObject(channelName).messages.pipe(
       filter((message) => !message.acknowledgingPreviousMessage),
       filter((message) => {
@@ -53,7 +63,11 @@ export class BroadcastHandlerService {
   }
 
   /** Send message without checking if it was received */
-  sendMessage(channelName: BroadcastHandlerChannelName, message: ChannelPacket, setNewMessageId: boolean = true): void {
+  sendMessage(
+    channelName: BroadcastHandlerChannelName,
+    message: ChannelPacket,
+    setNewMessageId: boolean = true
+  ): void {
     const updatedMessage = {
       ...message,
       needAck: false,
@@ -88,7 +102,7 @@ export class BroadcastHandlerService {
   }
 
   /** Close one underlying channel. Usually better to just unsubscribe from the getChannelMessages */
-  closeChannel(channelName: BroadcastHandlerChannelName) {
+  private closeChannel(channelName: BroadcastHandlerChannelName) {
     this.getChannelObject(channelName).subscription.unsubscribe();
     this.activeChannels = this.activeChannels.filter(
       (channel) => channel.channel.name !== this.getChannelFullName(channelName)
@@ -96,8 +110,10 @@ export class BroadcastHandlerService {
   }
 
   /** Close all underlying channels */
-  closeAllChannels() {
-    this.activeChannels.forEach((channel) => channel.subscription.unsubscribe());
+  private closeAllChannels() {
+    this.activeChannels.forEach((channel) =>
+      channel.subscription.unsubscribe()
+    );
     this.activeChannels = [];
   }
 
@@ -110,7 +126,9 @@ export class BroadcastHandlerService {
   }
 
   /** Only ACK messages */
-  private getChannelMessagesAck(channelName: BroadcastHandlerChannelName): Observable<ChannelPacket> {
+  private getChannelMessagesAck(
+    channelName: BroadcastHandlerChannelName
+  ): Observable<ChannelPacket> {
     return this.getChannelObject(channelName).messages.pipe(
       filter((message) => {
         return message.acknowledgingPreviousMessage;
@@ -129,7 +147,10 @@ export class BroadcastHandlerService {
       race(
         this.getChannelMessagesAck(channelName).pipe(
           filter((ackMessage: ChannelPacket) => {
-            if (ackMessage.targetId === sentMessage.senderId && ackMessage.messageId === sentMessage.messageId) {
+            if (
+              ackMessage.targetId === sentMessage.senderId &&
+              ackMessage.messageId === sentMessage.messageId
+            ) {
               observer.next(true);
               return true;
             }
@@ -148,7 +169,9 @@ export class BroadcastHandlerService {
   }
 
   /** gets open if present or returns a new and stores it */
-  private getChannel(channelName: BroadcastHandlerChannelName): BroadcastChannel {
+  private getChannel(
+    channelName: BroadcastHandlerChannelName
+  ): BroadcastChannel {
     return this.getChannelObject(channelName).channel;
   }
 
@@ -156,7 +179,9 @@ export class BroadcastHandlerService {
     return this.channelPrefix + channelName;
   }
 
-  private getChannelObject(channelName: BroadcastHandlerChannelName): ActiveChannel {
+  private getChannelObject(
+    channelName: BroadcastHandlerChannelName
+  ): ActiveChannel {
     const channelFullName: string = this.getChannelFullName(channelName);
     const cachedChannel: ActiveChannel | undefined = this.activeChannels.find(
       (current) => current.channel.name === channelFullName
@@ -171,12 +196,18 @@ export class BroadcastHandlerService {
     return channelObject;
   }
 
-  private createNewChannel(channelFullName: string, channelName: BroadcastHandlerChannelName): ActiveChannel {
+  private createNewChannel(
+    channelFullName: string,
+    channelName: BroadcastHandlerChannelName
+  ): ActiveChannel {
     const channel: BroadcastChannel = new BroadcastChannel(channelFullName);
     const messagesSubject = new Subject<ChannelPacket>();
 
     // emitting messages one time via a subject as onmessage only emits once for each channel
-    const subscription = this.getChannelRawMessages(channel, channelName).subscribe((message) => {
+    const subscription = this.getChannelRawMessages(
+      channel,
+      channelName
+    ).subscribe((message) => {
       // tell angular so change detection is handled properly
       this.ngZone.run(() => {
         messagesSubject.next(message);
@@ -220,13 +251,19 @@ export class BroadcastHandlerService {
     channelName: BroadcastHandlerChannelName
   ) {
     const receivedMessage: ChannelPacket = messageEvent.data;
-    if (receivedMessage.needAck && !receivedMessage.acknowledgingPreviousMessage) {
+    if (
+      receivedMessage.needAck &&
+      !receivedMessage.acknowledgingPreviousMessage
+    ) {
       this.respondAck(receivedMessage, channelName);
     }
     observer.next(receivedMessage);
   }
 
-  private respondAck(receivedMessage: ChannelPacket, channelName: BroadcastHandlerChannelName) {
+  private respondAck(
+    receivedMessage: ChannelPacket,
+    channelName: BroadcastHandlerChannelName
+  ) {
     const acknowledgementMessage: ChannelPacket = {
       ...receivedMessage,
       acknowledgingPreviousMessage: true,
